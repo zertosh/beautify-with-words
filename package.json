@@ -1,0 +1,27 @@
+{
+  "name": "beautify-with-words",
+  "version": "0.1.1",
+  "description": "Beautify javascript with unique \"long-ish words\" for variable names.",
+  "homepage": "https://github.com/zertosh/beautify-with-words",
+  "main": "beautify-with-words.js",
+  "bin": {
+    "beautify-with-words" : "beautify-with-words.js"
+  },
+  "author": "Andres Suarez <zertosh@gmail.com>",
+  "bugs": "https://github.com/zertosh/beautify-with-words/issues",
+  "repository" : {
+    "type": "git",
+    "url": "https://github.com/zertosh/beautify-with-words.git"
+  },
+  "dependencies": {
+    "uglify-js": "~2.4.11",
+    "phonetic": "~0.1.0",
+    "optimist": "~0.6.0"
+  },
+  "files": [
+    "beautify-with-words.js",
+    "LICENSE.md",
+    "README.md"
+  ],
+  "preferGlobal": true
+}
