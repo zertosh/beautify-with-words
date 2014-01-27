@@ -29,7 +29,7 @@ Reading from, and saving to, a file:
 beautify-with-words backbone-min.js -o backbone-youre-beautiful-regardless.js
 ```
 
-Send the output to `STDOUT`, and turn off syntax _beatification_ but keep variable renaming:
+Send the output to `STDOUT`, and turn off syntax _beautification_ but keep variable renaming:
 
 ```
 beautify-with-words backbone-min.js -b beautify=false
