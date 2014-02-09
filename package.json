@@ -11,7 +11,7 @@
   "homepage": "https://github.com/zertosh/beautify-with-words",
   "main": "./beautify-with-words.js",
   "bin": {
-    "beautify-with-words": "./beautify-with-words.js"
+    "beautify-with-words": "bin/beautify-with-words"
   },
   "author": "Andres Suarez <zertosh@gmail.com>",
   "bugs": "https://github.com/zertosh/beautify-with-words/issues",
@@ -27,6 +27,5 @@
   },
   "engines": {
     "node": ">=0.8.0"
-  },
-  "preferGlobal": true
+  }
 }
