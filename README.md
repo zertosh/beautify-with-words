@@ -94,3 +94,24 @@ Into this:
         },
 // more stuff...
 ```
+
+### API Usage ###
+
+```
+var beautifyWithWords = require('beautify-with-words');
+
+var beautifiedCode = beautifyWithWords(code, options);
+```
+
+`code` is a string of the code you want to beautify. `options` is optional, and must be an object. It has a `b` property, which is an object of the options to be passed to UglifyJS2.
+
+```
+var fs = require('fs');
+var beautifyWithWords = require('beautify-with-words');
+
+var backboneSource =  fs.readFileSync('backbone-min.js', { encoding: 'utf8' });
+
+var beautified = beautifyWithWords(backboneSource, { b: { bracketize: true } });
+
+console.log(beautified);
+```
