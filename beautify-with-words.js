@@ -11,7 +11,7 @@ module.exports = function beautifyWithWords (contents, argv) {
   };
 
   // Format options to pass to the beautifier
-  if (argv.b) {
+  if (argv && argv.b) {
     Array.isArray(argv.b) || (argv.b = [ argv.b ]);
     argv.b.forEach(function(option) {
       if (typeof option !== 'string') return;
