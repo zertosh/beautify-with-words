@@ -25,6 +25,13 @@
     "phonetic": "~0.1.0",
     "optimist": "~0.6.0"
   },
+  "devDependencies": {
+    "mocha": "~1.17.1",
+    "should": "~3.1.2"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
   "engines": {
     "node": ">=0.8.0"
   }
