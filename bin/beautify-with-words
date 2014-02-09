@@ -1,0 +1,63 @@
+#!/usr/bin/env node
+'use strict';
+
+var fs = require('fs');
+var beautifyWithWords = require('../');
+
+var argv = require('optimist')
+  .usage('Beautify javascript with unique \"long-ish words\" for variable names.\n' +
+         'https://github.com/zertosh/beautify-with-words\n\n' +
+         'Usage $0 [input_file.js] [options]\n\n' +
+         'If input file is omitted, then input will be read from STDIN.')
+  .alias('b', 'beautify')
+  .alias('o', 'output')
+  .alias('h', 'help')
+  .describe('b', 'Option to pass to UglifyJS2\'s beautifier. (https://github.com/mishoo/UglifyJS2#beautifier-options).')
+  .describe('o', 'Output file (default STDOUT).')
+  .describe('h', 'This help.')
+  .check(function(argv) {
+    if (argv._.length > 1) throw 'Error: too many filenames.';
+    if (argv.h) throw '';
+  })
+  .argv;
+
+// Read contents
+var contents = '';
+if (argv._.length === 0) {
+  // Read from STDIN
+  process.stdin.setEncoding('utf8');
+  process.stdin.resume();
+  process.stdin.on('data', function (buf) {
+      contents += buf.toString();
+  });
+  process.stdin.on('close', function () {
+      processContents(contents);
+  });
+} else {
+  // Read from file
+  try {
+    contents = fs.readFileSync(argv._[0], { encoding: 'utf8' });
+    processContents(contents);
+  } catch(e) {
+    console.error('Failed to open file "%s."', argv._[0]);
+    process.exit(1);
+  }
+}
+
+function processContents(contents) {
+  var stream = beautifyWithWords(contents, argv);
+
+  // Output
+  if (typeof argv.o === 'string') {
+    // Write to file
+    try {
+      fs.writeFileSync(argv.o, stream.toString(), { encoding: 'utf8' });
+    } catch(e) {
+      console.error('Failed to write to file "%s."', argv.o);
+      process.exit(1);
+    }
+  } else {
+    // Write to STDOUT
+    console.log( stream.toString() );
+  }
+}
